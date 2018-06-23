@@ -1,0 +1,76 @@
+org 100h
+
+mov ax, 0b800h
+mov ds, ax
+mov ch, 11011111b
+mov si, 0a0h
+
+mov cl, 'H' 
+mov ds:[bx+si], cx
+mov cl, 'e'
+mov ds:[bx+si+2], cx
+mov cl, 'l'
+mov ds:[bx+si+4], cx
+mov ds:[bx+si+6], cx
+mov cl, 'o'
+mov ds:[bx+si+8], cx
+mov cl, '!'
+mov ds:[bx+si+10], cl
+
+
+mov cx, [bx+si+10] 
+mov ax, 0b80Ah
+mov ds, ax
+
+mov [bx+si+10], cx
+mov ax, 0b800h
+mov ds, ax
+
+mov cx, [bx+si+8] 
+mov ax, 0b80Ah
+mov ds, ax
+
+mov [bx+si+8], cx
+mov ax, 0b800h
+mov ds, ax
+
+mov cx, [bx+si+6] 
+mov ax, 0b80Ah
+mov ds, ax
+
+mov [bx+si+6], cx
+mov ax, 0b800h
+mov ds, ax
+
+mov cx, [bx+si+4] 
+mov ax, 0b80Ah
+mov ds, ax
+
+mov [bx+si+4], cx
+mov ax, 0b800h
+mov ds, ax
+
+mov cx, [bx+si+2] 
+mov ax, 0b80Ah
+mov ds, ax
+
+mov [bx+si+2], cx
+mov ax, 0b800h
+mov ds, ax
+
+mov cx, [bx+si] 
+mov ax, 0b80Ah
+mov ds, ax
+
+mov [bx+si], cx
+mov ax, 0b814h
+mov ds, ax
+
+mov b.[bx+si],'>'
+mov byte ptr [bx+si+2], 03eh
+mov word ptr [bx+si+4], 0073eh
+mov w.[bx+si+6], 0073eh
+mov [bx+si+8], 03eh 
+mov [bx+si+10], 0073eh
+
+ret

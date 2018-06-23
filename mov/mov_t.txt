@@ -1,0 +1,79 @@
+org 0x100 ; 프로그램 시작
+
+mov cl, msg[0] ; 배열의 첫번째 엘리먼트 cl에 저장
+mov ch, 1101111b ; background, foreground color 설정
+mov bx, 0x15e ; 화면에 출력할 위치 값, bx에 저장
+mov ax, 0xb800 ; 비디오 메모리 주소값, ax에 저장
+mov ds, ax ; 데이터 세그먼트 offset, 비디오 메모리 주소로 설정
+mov ds:[bx], cx ; 배열의 첫번 째 엘리먼트 저장 = 화면에 'h' 출력
+
+; 여기서 많은 분들이 고민하셨을 텐데 (저도 엄청 고민했습니다.)
+; 현재 메모리 offset, 즉 DS(데이터 세그먼트)가 0xB800으로 세팅되어 있습니다.
+; 따라서 만약 DS를 배열 데이터가 저장되어 있는 offset값인 0x700으로 설정을 다시 해주지 않으면
+; mov cl, 0xB800:msg[1] 이기 때문에 이상한 값이 저장됩니다.
+; 그래서 배열데이터가 저장되어있는 memory offset 인 0x700으로 다시 세팅해줍니다. 
+
+mov ax, 0x700 
+mov ds, ax
+; 그런 다음, 다음 인덱스의 배열 원소를 가져오면 제대로 값이 들어옵니다.
+mov cl, msg[1]
+mov ax, 0xb800
+mov ds, ax
+mov [bx + 2], cx
+mov ax, 0x700
+mov ds, ax
+mov cl, msg[2]
+mov ax, 0xb800
+mov ds, ax
+mov [bx + 4], cx
+mov ax, 0x700
+mov ds, ax
+mov cl, msg[3]
+mov ax, 0xb800
+mov ds, ax
+mov [bx + 6], cx
+mov ax, 0x700
+mov ds, ax
+mov cl, msg[4]
+mov ax, 0xb800
+mov ds, ax
+mov [bx + 8], cx
+mov ax, 0x700
+mov ds, ax
+mov cl, msg[5]
+mov ax, 0xb800
+mov ds, ax
+mov [bx + 10], cx
+mov ax, 0x700
+mov ds, ax
+mov cl, msg[6]
+mov ax, 0xb800
+mov ds, ax
+mov [bx + 12], cx
+mov ax, 0x700
+mov ds, ax
+mov cl, msg[7]
+mov ax, 0xb800
+mov ds, ax
+mov [bx + 14], cx
+mov ax, 0x700
+mov ds, ax
+mov cl, msg[8]
+mov ax, 0xb800
+mov ds, ax
+mov [bx + 16], cx
+mov ax, 0x700
+mov ds, ax
+mov cl, msg[9]
+mov ax, 0xb800
+mov ds, ax
+mov [bx + 18], cx
+mov ax, 0x700
+mov ds, ax
+mov cl, msg[10]
+mov ax, 0xb800
+mov ds, ax
+mov [bx + 20], cx
+ret
+
+msg db 0x68,0x65,0x6c,0x6c,0x6f,0x2c,0x77,0x6f,0x72,0x6c,0x64,0x00

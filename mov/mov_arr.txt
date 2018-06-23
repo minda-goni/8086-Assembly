@@ -1,0 +1,24 @@
+org 100h
+
+mov bx, 0
+mov cl, byte ptr [a + 0]
+mov ch, 1101111b
+
+mov ax, 0xb800 
+mov ds, ax 
+mov ds:[bx], cx
+
+mov ax, 0x700
+mov ds, ax
+mov cl, byte ptr [a + 1]
+
+mov ax, 0xb800 
+mov ds, ax 
+mov ds:[bx+2], cx
+
+
+ret
+
+a db 'Hello', 0 
+b db 'world', 0
+c dw 5 dup(10)
