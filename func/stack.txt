@@ -1,0 +1,11 @@
+org 100h
+
+push ax
+push ds
+push [bx]
+
+pop ax
+pop ds
+pop [bx]
+
+ret

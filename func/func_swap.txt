@@ -1,0 +1,47 @@
+org 0x100
+
+lea ax, var1
+push ax
+lea ax, var2
+push ax
+
+call swap
+add sp, 4
+
+ret
+
+var1 dw 10h
+var2 dw 20h
+
+swap proc
+
+mov bp, sp
+mov ax, 0
+push ax
+
+push si
+push di
+push ax
+push bx
+
+mov si, word ptr bp + 2
+mov di, word prt bp + 4
+
+mov ax, word ptr si
+mov bx, word ptr di
+
+mov word ptr bp - 2, ax
+mov word ptr si, bx
+mov ax, word ptr bp - 2
+mov word ptr di, ax
+
+pop bx
+pop ax
+pop di
+pop si
+
+mov sp, bp
+
+ret
+
+swap endp

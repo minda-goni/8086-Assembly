@@ -1,0 +1,32 @@
+ORG    100h
+ 
+LEA    SI, msg       
+ 
+CALL   print_me
+ 
+RET                  
+
+print_me     PROC
+ 
+next_char:
+    CMP  byte ptr [SI], 0   
+    JE   stop       
+ 
+    MOV  AL, [SI]     
+ 
+    MOV  AH, 0Eh      
+    INT  10h        
+ 
+    ADD  SI, 1      
+ 
+    JMP  next_char   
+ 
+stop:
+
+RET             
+  
+print_me     ENDP
+
+msg    DB  'Hello World!', 0  
+ 
+END

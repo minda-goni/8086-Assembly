@@ -1,0 +1,21 @@
+include "emu8086.inc"
+ 
+org    100h
+ 
+mov al, 0
+mov bl, 10
+ 
+x_loop:
+cmp    al, bl
+je     equal
+putc 'x'
+inc al
+jmp x_loop
+ 
+equal:
+mov cx, 10
+y_loop:
+putc   'y'
+loop y_loop
+ 
+ret

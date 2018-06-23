@@ -1,0 +1,58 @@
+org 100h
+
+;논리연산
+mov ax, 1
+mov bx, 0
+and ax, bx
+ 
+mov ax, 1
+mov bx, 0
+or ax, bx
+ 
+mov ax, 1
+mov bx, 0
+xor ax, bx
+ 
+mov ax, 1
+mov bx, 0
+not ax
+not bx
+ 
+mov ax, 1
+test ax, ax
+test ax, 1
+ 
+;사칙연산
+mov ax, 3
+mov bx, 5
+ 
+add ax, 1
+sub bx, 1
+add ax, bx
+sub bx, ax
+
+mov al, 90h
+mov bl, 90h
+mul bl
+ 
+mov ax, 1000h
+mov bx, 1000h
+mul bx
+ 
+mov ax, 20
+mov bx, -20
+imul bx
+ 
+mov ax, 0ffffh
+mov bx, 0ffffh
+imul bx
+ 
+mov ax, 0ffffh
+mov bx, 0ffffh
+mul bx
+
+mov ax, 020h
+mov bx, 07h
+div bx
+
+ret
