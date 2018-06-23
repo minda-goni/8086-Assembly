@@ -1,0 +1,76 @@
+org 100h
+
+mov ax, 0b800h
+mov ds, ax
+mov bx, 0
+
+mov cl, 041h
+mov ch, 0c9h
+mov ds:[bx], cx
+
+mov cl, 042h
+mov [bx+2], cx
+
+mov cl, 043h
+mov [bx+4], cx
+
+mov cl, 044h
+mov [bx+6], cx
+
+mov cl, 045h
+mov [bx+8], cx
+
+mov cl, 046h
+mov [bx+10], cx
+
+mov ax, 0b80Ah
+mov ds, ax
+mov bx, 0
+
+mov cl, 047h
+mov ds:[bx], cx
+
+mov cl, 048h
+mov ds:[bx+2], cx
+
+mov cl, 049h
+mov ds:[bx+4], cx
+
+mov cl, 04Ah
+mov ds:[bx+6], cx
+
+mov cl, 04Bh
+mov ds:[bx+8], cx
+
+mov cl, 04Ch
+mov ds:[bx+10], cx
+
+mov cl, '-' 
+mov ch, 009h
+mov si, 160
+mov [bx+si], cx
+mov [bx+si+2], cx
+mov [bx+si+4], cx
+mov [bx+si+6], cx
+mov [bx+si+8], cx
+mov [bx+si+10], cx
+mov [bx+si+12], cx
+
+mov cl, '>'
+mov [bx+si+12], cx
+
+mov cl, '=' 
+mov ch, 009h
+mov bx, 320
+mov [bx], cx
+mov [bx+2], cx
+mov [bx+4], cx
+mov [bx+6], cx
+mov [bx+8], cx
+mov [bx+10], cx
+mov [bx+12], cx
+
+mov cl, '>'
+mov [bx+12], cx
+
+ret
